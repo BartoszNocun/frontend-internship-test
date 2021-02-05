@@ -1,2 +1,101 @@
 // Here goes your CSS
 @import 'layout/main';
+
+.popup {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    width: 300px;
+    background-color: $white-color;
+    border-radius: 5px;
+    opacity: 0;
+    animation: showAnimation 1s forwards;
+
+    &--active {
+        display: block;
+    }
+
+    @keyframes showAnimation {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }        
+    }
+
+    &__title {
+        font-family: 'Lobster', cursive;
+        margin: 5px 0 20px;
+        text-align: center;
+    }
+
+    &__row {
+        margin-bottom: 20px;
+
+        &-bottom-0 {
+            margin-bottom: 0;
+        }
+
+        &-bottom-30 {
+            margin-bottom: 30px;
+        }
+    }
+
+    &__label {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    &__input,
+    &__submit {
+        width: 100%;
+        height: 45px;
+        border: 1px solid $black-color;
+    }
+
+    &__input {
+        padding: 0 25px;
+    }
+
+    &__checkbox {
+        margin: 0 10px 0 0;
+        float: left;
+        width: 20px;
+        height: 20px;
+    }
+
+    &__submit {
+        font-family: sans-serif;
+        text-transform: uppercase;
+        color: $white-color;
+        background-color: $black-color;
+        border: transparent;
+        cursor: pointer;
+    }
+
+    &__close {
+        position: absolute;
+        top: -8px;
+        right: -14px;
+        font-size: 25px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: color .2s;
+
+        &:hover {
+            color: $gray-color;
+        }
+    }
+}
