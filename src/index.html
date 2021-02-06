@@ -22,19 +22,19 @@
     <button id="close-popup-form" class="popup__close"><span class="fas fa-times-circle"></span></button>
     <h2 class="popup__title">Login</h2>
     <form class="popup__form">
-      <div class="popup__row">
+      <div class="popup__row popup__row-email">
         <label for="email" class="popup__label">E-mail:</label>
-        <input type="email" name="email" class="popup__input" placeholder="E-mail" required>
+        <input type="email" name="email" class="popup__input" placeholder="E-mail">
       </div>
-      <div class="popup__row">
+      <div class="popup__row popup__row-password">
         <label for="password" class="popup__label">Password:</label>
-        <input type="password" name="password" class="popup__input" placeholder="Password" required>
+        <input type="password" name="password" class="popup__input" placeholder="Password">
       </div>
-      <div class="popup__row popup__row-bottom-30">
-        <input type="checkbox" name="terms" id="terms" class="popup__checkbox" required>
+      <div class="popup__row popup__row-checkbox">
+        <input type="checkbox" name="terms" class="popup__checkbox">
         <label for="terms" class="popup__label-checkbox">I agree to terms & conditions.</label>
       </div>
-      <div class="popup__row popup__row-bottom-0">
+      <div class="popup__row popup__row-submit">
         <button type="submit" class="popup__submit">submit</button>
       </div>
     </form>
