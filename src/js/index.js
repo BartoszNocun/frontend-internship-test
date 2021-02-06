@@ -1,8 +1,8 @@
 /* Here goes your JS code */
 const btnShow = document.querySelector('#show-popup-form');
 const btnClose = document.querySelector('#close-popup-form');
+const thanksMsg = document.querySelector('#thanks-msg');
 const popup = document.querySelector('.popup');
-
 const form = document.querySelector('.popup__form');
 const inputEmail = form.querySelector('input[name=email]');
 const inputPassword = form.querySelector('input[name=password]');
@@ -28,7 +28,9 @@ function testEmail(field) {
         emaildError.innerText = "Please enter a valid e-mail.";
         field.classList.add('error-border');
         document.querySelector('.popup__row-email').appendChild(emaildError);
+        return 1;
     }
+    return 0;
 }
 
 function testPassword(field, minLen, maxLen) {
@@ -48,7 +50,9 @@ function testPassword(field, minLen, maxLen) {
         passwordError.innerText = errorMsg;
         field.classList.add('error-border');
         document.querySelector('.popup__row-password').appendChild(passwordError);
+        return 1;
     }
+    return 0;
 }
 
 function testCheckbox(field) {
@@ -58,8 +62,18 @@ function testCheckbox(field) {
         checkboxError.innerText = "Please accept terms & conditions!";
         field.classList.add('error-border');
         document.querySelector('.popup__row-checkbox').appendChild(checkboxError);
+        return 1;
     }
+    return 0;
 }
+
+function submit() {
+    popup.classList.add('popup--close-animation');
+    setTimeout(() => {
+        popup.classList.remove('popup--active');
+        thanksMsg.classList.add('thanks-msg--active');
+    }, 3000);
+};
 
 form.addEventListener('submit', e => {
     e.preventDefault();
@@ -75,7 +89,12 @@ form.addEventListener('submit', e => {
         })
     }
 
-    testPassword(inputPassword, 5, 25);
-    testEmail(inputEmail);
-    testCheckbox(inputCheckbox);
+    let isValid = 0;
+    isValid += testPassword(inputPassword, 5, 25);
+    isValid += testEmail(inputEmail);
+    isValid += testCheckbox(inputCheckbox);
+
+    if (isValid === 0) {
+        submit();
+    }
 })
